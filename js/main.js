@@ -4,13 +4,13 @@ var invalidPassword = document.getElementById("invalidPassword");
 var invalidUserName = document.getElementById("invalidUserName");
 var loginBtn = document.getElementById("logInBtn");
 var signUp = document.getElementById("signUp");
-var register=document.getElementById("register");
-var openLogForm=document.getElementById("login");
-var loggingForm=document.getElementById("loggingForm");
-var logFormClose=document.getElementById("closeLog");
-var welcomeMessage=document.getElementById("welcome");
+var register = document.getElementById("register");
+var openLogForm = document.getElementById("login");
+var loggingForm = document.getElementById("loggingForm");
+var logFormClose = document.getElementById("closeLog");
+var welcomeMessage = document.getElementById("welcome");
 
-var regForm=document.getElementById("registerForm");
+var regForm = document.getElementById("registerForm");
 var firstName = document.getElementById("firstName");
 var firstNameInvalid = document.getElementById("invalidFirstName");
 var lastName = document.getElementById("lastName");
@@ -24,16 +24,16 @@ var invalidRegUserName = document.getElementById("alreadyTaken");
 var emptyRegUserName = document.getElementById("entUserName");
 var invalidRegPass = document.getElementById("invalidRegPass");
 var retypePassword = document.getElementById("retypePassword");
-var retypePassNotMatch= document.getElementById("passNotMatch");
+var retypePassNotMatch = document.getElementById("passNotMatch");
 var userGenderMale = document.getElementById("genderMale");
 var userGenderFemale = document.getElementById("genderFemale");
 var age = document.getElementById("age");
 var regesterationBtn = document.getElementById("registerBtn");
-var closeRegForm=document.getElementById("closeReg");
+var closeRegForm = document.getElementById("closeReg");
+var succReg=document.getElementById("successfull");
 
-var allH6= document.getElementsByTagName("h6");
-for (var i=0; i<allH6.length;i++)
-{
+var allH6 = document.getElementsByTagName("h6");
+for (var i = 0; i < allH6.length; i++) {
     allH6[i].classList.remove("text-danger");
 }
 
@@ -55,10 +55,17 @@ else {
     allUsers = [];
 }
 
-function clearInputs()
-{
-    userNameInput.value="";
-    userPasswordInput.value="";
+function clearInputs() {
+    userNameInput.value = "";
+    userPasswordInput.value = "";
+    firstName.value = "";
+    lastName.value = "";
+    email = "";
+    regPassword.value = "";
+    retypePassword.value = "";
+    age.value = "";
+
+
 }
 
 regesterationBtn.addEventListener("click", addUserProfile);
@@ -67,93 +74,87 @@ regPassword.addEventListener("keyup", passwordValidation);
 firstName.addEventListener("keyup", firstNameValidation);
 lastName.addEventListener("keyup", lastNameValidation);
 
-register.addEventListener("click", function(){
-    regForm.classList.replace("display-none", "display");
-    loggingForm.classList.replace("display", "display-none");
+register.addEventListener("click", function () {
     welcomeMessage.classList.replace("display", "display-none");
+    succReg.classList.replace("display", "display-none");
+    loggingForm.classList.replace("display", "display-none");
+    regForm.classList.replace("display-none", "display");
 
 })
-closeRegForm.addEventListener("click", function(){
+closeRegForm.addEventListener("click", function () {
     regForm.classList.replace("display", "display-none");
 
 
 })
 
-logFormClose.addEventListener("click", function(){
+logFormClose.addEventListener("click", function () {
     loggingForm.classList.replace("display", "display-none")
 })
-signUp.addEventListener("click", function(){
-   
+signUp.addEventListener("click", function () {
+
     loggingForm.classList.replace("display", "display-none");
     regForm.classList.replace("display-none", "display");
-    
+
 })
 
-openLogForm.addEventListener("click",function(){
+openLogForm.addEventListener("click", function () {
+    succReg.classList.replace("display", "display-none");
     welcomeMessage.classList.replace("display", "display-none");
     loggingForm.classList.replace("display-none", "display");
     clearInputs();
     regForm.classList.replace("display", "display-none");
-    invalidUserName.classList.replace("display","display-none");
-    invalidPassword.classList.replace("display", "display-none"); 
+    invalidUserName.classList.replace("display", "display-none");
+    invalidPassword.classList.replace("display", "display-none");
 
 })
 
-loginBtn.addEventListener("click", function(){
+loginBtn.addEventListener("click", function () {
 
-for (var i=0; i< allUsers.length; i++)
-{
-    if(allUsers[i].userName== userNameInput.value && allUsers[i].userPassword==userPasswordInput.value)
-    { 
-        console.log("hello");
-        loggingForm.classList.replace("display", "display-none");
-        welcomeMessage.classList.replace("display-none", "display");
-        welcomeMessage.innerHTML=`Welcome ${allUsers[i].userFirstName} ${allUsers[i].userLastName}`;
+    for (var i = 0; i < allUsers.length; i++) {
+        if (allUsers[i].userName == userNameInput.value && allUsers[i].userPassword == userPasswordInput.value) {
+            console.log("hello");
+            loggingForm.classList.replace("display", "display-none");
+            welcomeMessage.classList.replace("display-none", "display");
+            welcomeMessage.innerHTML = `Welcome ${allUsers[i].userFirstName} ${allUsers[i].userLastName}`;
 
-    }
-    else  if(allUsers[i].userName== userNameInput.value && allUsers[i].userPassword!=userPasswordInput.value)
-    {
-        console.log("invalid pass")
-         invalidPassword.classList.replace("display-none", "display"); 
-         invalidUserName.classList.replace("display","display-none");
+        }
+        else if (allUsers[i].userName == userNameInput.value && allUsers[i].userPassword != userPasswordInput.value) {
+            console.log("invalid pass")
+            invalidPassword.classList.replace("display-none", "display");
+            invalidUserName.classList.replace("display", "display-none");
 
+        }
+        else if (allUsers[i].userName != userNameInput.value && allUsers[i].userPassword == userPasswordInput.value) {
+            console.log("invalid user");
+            invalidUserName.classList.replace("display-none", "display");
+            invalidPassword.classList.replace("display", "display-none");
+        }
+        else if (allUsers[i].userName != userNameInput.value && allUsers[i].userPassword != userPasswordInput.value) {
+            console.log("invalid both");
+            invalidUserName.classList.replace("display-none", "display");
+            invalidPassword.classList.replace("display-none", "display");
+        }
     }
-    else  if(allUsers[i].userName!= userNameInput.value && allUsers[i].userPassword==userPasswordInput.value)
-    {
-        console.log("invalid user");
-        invalidUserName.classList.replace("display-none","display");
-        invalidPassword.classList.replace("display", "display-none"); 
-    }
-    else  if(allUsers[i].userName!= userNameInput.value && allUsers[i].userPassword!=userPasswordInput.value)
-    {
-        console.log("invalid both");
-        invalidUserName.classList.replace("display-none","display");
-        invalidPassword.classList.replace("display-none", "display"); 
-    }
-}
 
 })
 
-function checkRetypePassword()
-{
-    if ( regPassword.value != retypePassword.value )
-    {
+function checkRetypePassword() {
+    if (regPassword.value != retypePassword.value) {
         retypePassNotMatch.classList.replace("display-none", "display");
-        retypePasswordCheck=false; 
+        retypePasswordCheck = false;
 
     }
-    else
-    {
+    else {
         retypePassNotMatch.classList.replace("display", "display-none");
-        retypePasswordCheck=true; 
+        retypePasswordCheck = true;
     }
 
 }
 
 function checkUserNameStorage() {
-    var exist = false; 
+    var exist = false;
     var notExist = false;
-    if (regUserName.value =="") {
+    if (regUserName.value == "") {
         emptyRegUserName.classList.replace("display-none", "display");
         checkUserName = false;
     }
@@ -196,13 +197,13 @@ function checkUserNameStorage() {
 }
 
 function checkEmailStorage() {
-    var exist = false; 
+    var exist = false;
     var notExist = false;
-    if (email.value =="") {
+    if (email.value == "") {
         emptyEmail.classList.replace("display-none", "display");
         checkEmail = false;
     }
-   
+
     else if (email.value != null) {
         for (var i = 0; i < allUsers.length; i++) {
             if (allUsers[i].userEmail == email.value) {
@@ -240,7 +241,7 @@ function checkEmailStorage() {
 
         }
     }
-    
+
 }
 
 
@@ -322,14 +323,14 @@ function emailValidation() {
 
 
     else if (rejex.test(email.value) == true) {
-        userInvalidEmail.classList.replace("display", "display-none");
+        
         email.classList.remove("is-invalid");
         email.classList.add("is-valid");
         checkEmail = true;
 
     }
     else if (rejex.test(email.value) == false) {
-        userInvalidEmail.classList.replace("display-none", "display");
+        
         email.classList.remove("is-valid");
         email.classList.add("is-invalid");
         checkEmail = false;
@@ -347,7 +348,7 @@ function addUserProfile() {
 
 
 
-    if (checkEmail == true && checkUserName == true && checkage == true && checkPassword == true && checkFirstName == true && checkLastName == true &&  retypePasswordCheck==true) {
+    if (checkEmail == true && checkUserName == true && checkage == true && checkPassword == true && checkFirstName == true && checkLastName == true && retypePasswordCheck == true) {
         var user = {
             userFirstName: firstName.value,
             userLastName: lastName.value,
@@ -365,6 +366,10 @@ function addUserProfile() {
         allUsers.push(user);
 
         localStorage.setItem("users", JSON.stringify(allUsers));
+        clearInputs();
+        regForm.classList.replace("display", "display-none");
+        succReg.classList.replace("display-none", "display");
+
 
     }
     else if (lastName.value == "" || firstName.value == "" || regPassword.value == "" || age.value == "") {
@@ -373,7 +378,7 @@ function addUserProfile() {
 }
 
 function ageValidation() {
-    if (age.value =="") {
+    if (age.value == "") {
         checkage = false;
     }
     else {
