@@ -1,0 +1,175 @@
+<html>
+<header>
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</header>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" id="register" href="#">Register</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item text-center py-sm-5 py-lg-0 active">
+                    <a class="nav-link" id="login" href="#">Log In <span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class=" display-none" id="welcome"> </h1>
+
+
+    <div class=" logingForm display-none pb-5" id="loggingForm">
+        <div class="icon">
+            <a href="" class=" text-decoration-none" id="closeLog"> <i class="fas fa-times ml-3" id="close"></i></a>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class=" d-flex flex-column align-items-center">
+                    <label for="UserName" class=" text-white ">User Name</label>
+                    <input id="UserName" type="text" class=" form-control  w-50">
+                    <h6 class=" text-danger display-none w-50" id="invalidUserName"> invalid Username</h6>
+
+                    <label for="password" class=" text-white"> Password</label>
+                    <input id="password" class=" form-control w-50" type="password">
+                    <h6 class=" w-50 text-danger display-none" id="invalidPassword"> invalid Password</h6>
+
+                    <button class=" btn form-control border-white rounded w-25 text-white my-5" id="logInBtn">Log
+                        in</button>
+
+                    <h6 class=" w-50 text-white" id="account"> Do you have an account? <a
+                            class=" text-danger text-decoration-none" href="#" id="signUp">Sign Up</a></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" logingForm display-none pb-5" id="registerForm">
+        <div class="icon">
+            <a href="" class=" text-decoration-none" id="closeReg"> <i class="fas fa-times ml-3" id="close"></i></a>
+
+        </div>
+        <div class=" row">
+            <div class=" col-md-6">
+                <div class=" pl-3">
+                    <label for="firstName" class=" text-white ">First Name:</label>
+                    <input id="firstName" type="text" class=" form-control w-75">
+                    <h6 class=" w-100 text-danger display-none" id="invalidFirstName">min:3char, max:30 char,no digits
+                        or special char</h6>
+                </div>
+            </div>
+
+            <div class=" col-md-6">
+                <div class=" pl-3">
+                    <label for="lastName" class=" text-white ">Last Name:</label>
+                    <input id="lastName" type="text" class=" form-control w-75 ">
+                    <h6 class=" w-100 text-danger display-none" id="invalidLastName"> min:3char, max:30 char,no digits
+                        or special char</h6>
+                </div>
+            </div>
+
+            <div class=" col-md-6">
+                <div class=" pl-3">
+                    <label for="regUserName" class=" text-white ">User Name:</label>
+                    <input id="regUserName" type="text" class=" form-control w-75 ">
+                    <h6 class=" w-100 text-danger display-none" id="alreadyTaken"> User Name already taken</h6>
+                    <h6 class=" w-100 text-danger display-none" id="entUserName"> Please Enter user Name</h6>
+                </div>
+            </div>
+            <div class=" col-md-6">
+                <div class=" pl-3">
+
+                    <label for="email" class=" text-white"> E-mail:</label>
+                    <input id="email" class=" form-control  w-75" type="email">
+                    <h6 class=" w-100 text-danger display-none" id="invalidEmail">E-mail already exists</h6>
+                    <h6 class=" w-100 text-danger display-none" id="entEmail"> Please Enter Email</h6>
+
+
+                </div>
+            </div>
+
+
+            <div class=" col-md-6">
+                <div class=" pl-3">
+                    <label for="regPassword" class=" text-white"> Password:</label>
+                    <input id="regPassword" class=" form-control w-75" type="password">
+                    <h6 class=" w-100 text-danger display-none" id="invalidRegPass">Password not less than 8 characters,
+                        includes[at least one letter,one number,and one special character !#$%&@?]</h6>
+
+                </div>
+
+            </div>
+
+            <div class=" col-md-6">
+                <div class=" pl-3">
+                    <label for="retypePassword" class=" text-white"> Retype Password:</label>
+                    <input id="retypePassword" class=" form-control w-75" type="password">
+                    <h6 class=" w-100 display-none text-danger" id="passNotMatch"> Password not match</h6>
+
+                </div>
+            </div>
+
+
+            <div class=" col-md-6">
+                <div class="pl-3">
+                    <h6 class=" text-white">Gender:</h6>
+                    <label for="genderMale" class=" text-white"> Male</label>
+                    <input id="genderMale" class="" checked name="gender" type="radio" value="male">
+                    <label for="genderFemale" class=" text-white"> Female</label>
+                    <input id="genderFemale" class="" name="gender" type="radio" value="female">
+
+
+                </div>
+            </div>
+
+            <div class=" col-md-6">
+                <div class="pl-3 ">
+                    <h6 class=" text-white">Age:</h6>
+
+                    <input id="age" class=" w-25 form-control" type="number">
+
+
+                </div>
+            </div>
+
+
+
+            <div class=" col-12">
+                <div class=" d-flex justify-content-center pt-3 ">
+                    <button class=" btn form-control border-white w-auto rounded text-white "
+                        id="registerBtn">Register</button>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="js/all.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+
+
+</html>

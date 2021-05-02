@@ -1,0 +1,97 @@
+.navbar {
+    background-color: #192a56;
+    justify-content: space-around;
+}
+
+.navbar-brand {
+    color: white !important;
+    border: solid white 2px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-link {
+    color: white !important;
+    border: solid 2px white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.navbar-toggler-icon {
+    background-color: white !important;
+}
+
+body {
+    background-color: #273c75;
+}
+
+.logingForm {
+    background-color: #718093;
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    width: 50%;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.display {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-flex {
+    display: flex;
+}
+
+h6 {
+    color: black !important;
+}
+
+.icon {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.icon a {
+    color: white;
+}
+
+@media(max-width: 667px) {
+    #UserName, #invalidUserName, #password, #signUp {
+        width: 75% !important;
+    }
+    #signUp {
+        width: 100% !important;
+    }
+    #logInBtn {
+        width: 50% !important;
+    }
+    #account {
+        width: 75% !important;
+    }
+}
+
+@media(max-width: 991px) {
+    .logingForm {
+        top: 40%;
+    }
+}
+
+#welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+}
